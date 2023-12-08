@@ -1,0 +1,140 @@
+.pageWrap {
+  padding-top: 2rem;
+  .backWrap {
+    color: #545f7d;
+
+    font-size: 16px;
+
+    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+  .pageTitle {
+    color: #213f7d;
+
+    font-size: 24px;
+
+    font-weight: 500;
+  }
+  .profileCard {
+    margin-top: 3rem;
+    padding: 25px 25px 0px 25px;
+    border-radius: 4px;
+    border: 1px solid rgba(33, 63, 125, 0.06);
+    box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+    .profileContainer {
+      @media (max-width: 930px) {
+        flex-direction: column;
+      }
+      .profileImg {
+        background-color: rgba(33, 63, 125, 0.2);
+      }
+      .userInfo {
+        flex-wrap: nowrap;
+        @media (max-width: 930px) {
+          justify-content: center;
+        }
+
+        .username,
+        .userAmount {
+          white-space: nowrap;
+          color: #213f7d;
+
+          font-size: 22px;
+
+          font-weight: 500;
+        }
+        .userTier {
+          white-space: nowrap;
+          color: #545f7d;
+
+          font-size: 14px;
+
+          font-weight: 500;
+        }
+        .userRate {
+          display: inline-flex;
+          align-items: center;
+          width: 100%;
+        }
+
+        .userId,
+        .userBank {
+          color: #545f7d;
+
+          font-size: 14px;
+
+          font-weight: 400;
+        }
+        .userBank {
+          font-size: 12px;
+        }
+        @media (max-width: 500px) {
+          flex-direction: column;
+          .divider {
+            display: none;
+          }
+          .userAmount,
+          .username,
+          .userTier,
+          .userBank,
+          .userId,
+          .userRate {
+            text-align: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+    .profileTabs {
+      margin-top: 2rem;
+
+      justify-content: space-between;
+
+      .navLinkBox {
+        padding-bottom: 6px;
+
+        p {
+          color: black;
+          text-align: center;
+          // font-family: SF Compact Text;
+          font-size: 16px;
+          text-transform: capitalize;
+          font-weight: 400;
+          @media (max-width: 768px) {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+  .generalTab {
+    margin-top: 3rem;
+    padding: 25px;
+
+    .title {
+      text-transform: capitalize;
+      color: #213f7d;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .label,
+    .value {
+      color: #545f7d;
+
+      font-size: 12px;
+
+      font-weight: 400;
+
+      text-transform: uppercase;
+    }
+    .value {
+      margin-top: 13px;
+      font-size: 16px;
+      text-transform: none;
+      font-weight: 500;
+    }
+  }
+}

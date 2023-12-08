@@ -1,0 +1,46 @@
+.tableData {
+  color: #545f7d;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+.badge {
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+.formWrap {
+  input:focus {
+    border-color: #213f7d;
+  }
+  .buttonWrap {
+    margin-top: 1rem;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
+    .outline {
+      border-radius: 8px;
+      border: 1px solid #545f7d;
+      color: #545f7d;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      text-transform: capitalize;
+    }
+    .filled {
+      border-radius: 8px;
+      border: 1px solid #39cdcc;
+      background: #39cdcc;
+      color: #fff;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      text-transform: capitalize;
+    }
+  }
+}
+.menuItem {
+  color: #545f7d;
+
+  font-size: 14px;
+
+  font-weight: 500;
+}

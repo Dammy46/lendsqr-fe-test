@@ -1,0 +1,103 @@
+@font-face {
+  font-family: "Avenir Next";
+  src: url("/AvenirNextLTPro-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir Next";
+  src: url("/AvenirNextLTPro-Bold.otf") format("opentype");
+  font-weight: bold;
+}
+
+.wrapper {
+  font-family: "Avenir Next";
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  .companyImage {
+    flex: 1;
+    padding: 4rem;
+    .companyLogo {
+      width: 170px;
+      height: 36px;
+    }
+    div {
+      margin-top: 7rem;
+      width: 600px;
+      height: 330px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  .formWrap {
+    flex: 1.2;
+    background-color: #fff;
+    box-shadow: 0px 15px 90px 0px rgba(0, 0, 0, 0.03);
+    .formContainer {
+      width: 500px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      .title {
+        color: #213f7d;
+
+        font-size: 40px;
+        font-weight: 700;
+        letter-spacing: -1.6px;
+      }
+      .desc {
+        color: #545f7d;
+
+        font-size: 20px;
+
+        font-weight: 400;
+      }
+      form {
+        margin-top: 2rem;
+        width: 100%;
+        .toggle {
+          color: #39cdcc;
+
+          font-size: 12px;
+
+          font-weight: 600;
+
+          letter-spacing: 1.2px;
+        }
+        .link {
+          color: #39cdcc;
+          text-align: left;
+
+          font-size: 12px;
+          font-weight: 600;
+
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
+        }
+        .btn {
+          border-radius: 8px;
+          background-color: #39cdcc;
+
+          font-size: 14px;
+
+          font-weight: 600;
+
+          letter-spacing: 1.4px;
+          text-transform: uppercase;
+        }
+      }
+      @media (max-width: 500px) {
+        width: 100%;
+      }
+    }
+  }
+}

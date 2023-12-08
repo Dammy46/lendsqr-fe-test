@@ -1,0 +1,28 @@
+.link {
+  display: inline-flex;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  align-items: center;
+  color: #213f7d;
+  padding: 7px 20px 7px 30px;
+  opacity: 0.5;
+
+  &[data-active] {
+    &,
+    &:hover {
+      background-color: rgb(57 205 204 / 6%);
+      border-left: 4px solid #39cdcc;
+      opacity: 1;
+    }
+  }
+}
+.linkHead {
+  color: #545f7d;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 7px 20px 7px 30px;
+}

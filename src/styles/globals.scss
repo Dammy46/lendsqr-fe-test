@@ -1,0 +1,112 @@
+::-webkit-scrollbar {
+  width: 0;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.mantine-Tabs-list::before {
+  display: none;
+}
+.mantine-datatable-pagination {
+  margin-top: 1rem;
+  .mantine-datatable-pagination-text {
+    position: absolute;
+    left: 160px;
+    @media (max-width: 500px) {
+      display: none;
+    }
+  }
+}
+.mantine-datatable-pagination .mantine-Text-root {
+  color: #545f7d !important;
+
+  font-size: 14px !important;
+
+  font-weight: 400 !important;
+}
+.mantine-datatable-header-cell-sortable-group {
+  justify-content: flex-start !important;
+  gap: 7px;
+}
+.mantine-datatable-header-cell-sortable-text {
+  flex-grow: inherit !important;
+  color: #545f7d;
+  font-size: 12px;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+}
+.mantine-datatable-header-cell-filter-action-icon {
+  border: none !important;
+  position: relative;
+}
+.mantine-datatable-header-cell-filter-action-icon:hover {
+  background: none !important;
+}
+.mantine-datatable-header-cell-filter-action-icon svg {
+  display: none !important;
+}
+.mantine-datatable-header-cell-filter-action-icon::before {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M6.22222 13.3333H9.77778V11.5555H6.22222V13.3333ZM0 2.66666V4.44443H16V2.66666H0ZM2.66667 8.88888H13.3333V7.1111H2.66667V8.88888Z' fill='%23545F7D'/%3E%3C/svg%3E");
+  display: block;
+}
+.mantine-Popover-arrow {
+  display: none !important;
+}
+.mantine-InputWrapper-label {
+  color: #545f7d;
+  font-size: 14px;
+
+  font-weight: 500;
+}
+.mantine-datatable-pagination-pages-control[aria-label="Previous page"],
+.mantine-datatable-pagination-pages-control[aria-label="Next page"] {
+  border: none !important;
+  border-radius: 4px !important;
+  background: rgba(33, 63, 125, 0.1) !important;
+}
+.mantine-Pagination-control {
+  background: none !important;
+  border: none !important;
+  font-size: 16px;
+  color: #545f7d;
+  font-weight: 500;
+  opacity: 0.5 !important;
+}
+.mantine-Pagination-control[data-active="true"] {
+  opacity: 1 !important;
+  color: #545f7d !important;
+}
+.mantine-datatable {
+  background: none !important;
+}
+.mantine-datatable-pagination {
+  border: none !important;
+}
+.mantine-Table-th,
+.mantine-Table-td {
+  padding: 15px 30px !important;
+}
+.mantine-Table-tr:last-child {
+  border-bottom: none !important;
+}
+.mantine-PasswordInput-visibilityToggle:hover {
+  background: none !important;
+}
+
+.mantine-PasswordInput-input:focus,
+.mantine-PasswordInput-input:focus-within,
+.mantine-PinInput-input:focus,
+.mantine-Select-input:focus,
+.mantine-Select-input:focus-within,
+.mantine-TextInput-input:focus,
+.mantine-TextInput-input:focus-within {
+  --_input-bd: #213f7d !important;
+}

@@ -1,0 +1,32 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  height: 160px;
+  box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+  padding: 20px 30px;
+  gap: 0.5rem;
+  .cardIcon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .cardTitle {
+    text-transform: uppercase;
+    color: #545f7d;
+
+    font-size: 14px;
+
+    font-weight: 500;
+  }
+  .cardTotal {
+    color: #213f7d;
+    font-size: 24px;
+
+    font-weight: 600;
+  }
+}
