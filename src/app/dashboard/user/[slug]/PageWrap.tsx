@@ -14,38 +14,25 @@ import {
   GridCol,
 } from "@mantine/core";
 import variable from "./slug.module.scss";
-import {
-  useParams,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { UsersProps } from "@/utils/types";
+import { tabs } from "@/utils/data";
 
-
-const data = [
-  "general details",
-  "documents",
-  "bank details",
-  "loans",
-  "savings",
-  "app and system",
-] as string[];
-interface  DetailsProps {
-    userDetails: UsersProps[]
+interface DetailsProps {
+  userProfile: UsersProps | undefined;
 }
-const PageWrap:React.FC<DetailsProps> = ({userDetails}) => {
-
-  const { fullStarIcon, outlineStarIcon, profileIcon } = Svgs();
+const PageWrap: React.FC<DetailsProps> = ({ userProfile }) => {
   const router = useRouter();
   const pathname = usePathname();
-  const params = useParams();
-  const { slug } = params;
-
   const searchParams = useSearchParams();
-  const { arrowLeftIcon } = Svgs();
   const search = searchParams.get("tab");
+  const [userDetails, setUserDetails] = useState<UsersProps | undefined>(
+    userProfile
+  );
+  const { fullStarIcon, outlineStarIcon, profileIcon } = Svgs();
+
+  const { arrowLeftIcon } = Svgs();
   const createQueryString = useCallback(
     (name: string, value: string) => {
       const params = new URLSearchParams(searchParams);
@@ -55,7 +42,17 @@ const PageWrap:React.FC<DetailsProps> = ({userDetails}) => {
     },
     [searchParams]
   );
-  
+  useEffect(() => {
+    const checkStorage = localStorage.getItem("userDetail");
+
+    if (userProfile === undefined && checkStorage) {
+      const modifiedData: UsersProps = JSON.parse(checkStorage);
+      setUserDetails(modifiedData);
+    }
+
+    //eslint-disable-next-line
+  }, []);
+
   return (
     <Box className={variable.pageWrap}>
       <Text
@@ -109,9 +106,9 @@ const PageWrap:React.FC<DetailsProps> = ({userDetails}) => {
           >
             <Box>
               <Text className={variable.username}>
-                {userDetails ? userDetails[0].personal.fullName : "N/A"}
+                {userDetails ? userDetails.personal.fullName : "N/A"}
               </Text>
-              <Text className={variable.userId}>LSQFf587g90</Text>
+              <Text className={variable.userId}>{userDetails ? userDetails?.userId : 'N/A'}</Text>
             </Box>
             <Divider orientation="vertical" className={variable.divider} />
             <Box>
@@ -132,11 +129,14 @@ const PageWrap:React.FC<DetailsProps> = ({userDetails}) => {
           </Group>
         </Flex>
         <Grid className={variable.profileTabs}>
-          {data.map((item: string, index: number) => (
+          {tabs.map((item: string, index: number) => (
             <GridCol span={{ lg: 2, md: 3, sm: 4 }} key={index}>
               <Link
-                href={pathname + "?" +  item === "general details" ? createQueryString("tab", item) : ""}
-             
+                href={
+                  pathname + "?" + item === "general details"
+                    ? createQueryString("tab", item)
+                    : ""
+                }
               >
                 <Box
                   className={variable.navLinkBox}
@@ -160,7 +160,7 @@ const PageWrap:React.FC<DetailsProps> = ({userDetails}) => {
               <Box>
                 <Text className={variable.label}>full name</Text>
                 <Text className={variable.value}>
-                  {userDetails ? userDetails[0].personal.fullName : "N/A"}
+                  {userDetails ? userDetails.personal.fullName : "N/A"}
                 </Text>
               </Box>
             </GridCol>
@@ -168,7 +168,7 @@ const PageWrap:React.FC<DetailsProps> = ({userDetails}) => {
               <Box>
                 <Text className={variable.label}>phone number</Text>
                 <Text className={variable.value}>
-                  {userDetails ? userDetails[0].personal.phoneNumber : "N/A"}
+                  {userDetails ? userDetails.personal.phoneNumber : "N/A"}
                 </Text>
               </Box>
             </GridCol>
@@ -176,7 +176,7 @@ const PageWrap:React.FC<DetailsProps> = ({userDetails}) => {
               <Box>
                 <Text className={variable.label}>email address</Text>
                 <Text className={variable.value}>
-                  {userDetails ? userDetails[0].personal.email : "N/A"}
+                  {userDetails ? userDetails.personal.email : "N/A"}
                 </Text>
               </Box>
             </GridCol>
@@ -184,39 +184,39 @@ const PageWrap:React.FC<DetailsProps> = ({userDetails}) => {
               <Box>
                 <Text className={variable.label}>bvn</Text>
                 <Text className={variable.value}>
-                  {userDetails ? userDetails[0].personal.bvn : "N/A"}
+                  {userDetails ? userDetails.personal.bvn : "N/A"}
                 </Text>
               </Box>
             </GridCol>
             <GridCol span={{ lg: 2.3, md: 3, sm: 6 }}>
               <Box>
-                <Text className={variable.label}>email address</Text>
+                <Text className={variable.label}>gender</Text>
                 <Text className={variable.value}>
-                  {userDetails ? userDetails[0].personal.gender : "N/A"}
+                  {userDetails ? userDetails.personal.gender : "N/A"}
                 </Text>
               </Box>
             </GridCol>
             <GridCol span={{ lg: 2.3, md: 3, sm: 6 }}>
               <Box>
                 <Text className={variable.label}>marital status</Text>
-                <Text className={variable.value}  tt={"capitalize"}>
-                  {userDetails ? userDetails[0].personal.maritalStatus : "N/A"}
+                <Text className={variable.value} tt={"capitalize"}>
+                  {userDetails ? userDetails.personal.maritalStatus : "N/A"}
                 </Text>
               </Box>
             </GridCol>
             <GridCol span={{ lg: 2.3, md: 3, sm: 6 }}>
               <Box>
                 <Text className={variable.label}>children</Text>
-                <Text className={variable.value}  tt={"capitalize"}>
-                  {userDetails ? userDetails[0].personal.children : "N/A"}
+                <Text className={variable.value} tt={"capitalize"}>
+                  {userDetails ? userDetails.personal.children : "N/A"}
                 </Text>
               </Box>
             </GridCol>
             <GridCol span={{ lg: 2.3, md: 3, sm: 6 }}>
               <Box>
                 <Text className={variable.label}>type of residence</Text>
-                <Text className={variable.value}  tt={"capitalize"}>
-                  {userDetails ? userDetails[0].personal.residenceType : "N/A"}
+                <Text className={variable.value} tt={"capitalize"}>
+                  {userDetails ? userDetails.personal.residenceType : "N/A"}
                 </Text>
               </Box>
             </GridCol>
@@ -229,25 +229,23 @@ const PageWrap:React.FC<DetailsProps> = ({userDetails}) => {
               <Box>
                 <Text className={variable.label}>level of education</Text>
                 <Text className={variable.value}>
-                  {userDetails ? userDetails[0].education.level : "N/A"}
+                  {userDetails ? userDetails.education.level : "N/A"}
                 </Text>
               </Box>
             </GridCol>
             <GridCol span={{ lg: 3, md: 4, sm: 6 }}>
               <Box>
                 <Text className={variable.label}>Employment Status</Text>
-                <Text className={variable.value}  tt={"capitalize"}>
-                  {userDetails
-                    ? userDetails[0].education.employmentStatus
-                    : "N/A"}
+                <Text className={variable.value} tt={"capitalize"}>
+                  {userDetails ? userDetails.education.employmentStatus : "N/A"}
                 </Text>
               </Box>
             </GridCol>
             <GridCol span={{ lg: 3, md: 4, sm: 6 }}>
               <Box>
                 <Text className={variable.label}>sector of employment</Text>
-                <Text className={variable.value}  tt={"capitalize"}>
-                  {userDetails ? userDetails[0].education.sector : "N/A"}
+                <Text className={variable.value} tt={"capitalize"}>
+                  {userDetails ? userDetails.education.sector : "N/A"}
                 </Text>
               </Box>
             </GridCol>
@@ -255,7 +253,7 @@ const PageWrap:React.FC<DetailsProps> = ({userDetails}) => {
               <Box>
                 <Text className={variable.label}>duration of employment</Text>
                 <Text className={variable.value}>
-                  {userDetails ? userDetails[0].education.duration : "N/A"}
+                  {userDetails ? userDetails.education.duration : "N/A"}
                 </Text>
               </Box>
             </GridCol>
@@ -263,7 +261,7 @@ const PageWrap:React.FC<DetailsProps> = ({userDetails}) => {
               <Box>
                 <Text className={variable.label}>office mail</Text>
                 <Text className={variable.value}>
-                  {userDetails ? userDetails[0].education.officeMail : "N/A"}
+                  {userDetails ? userDetails.education.officeMail : "N/A"}
                 </Text>
               </Box>
             </GridCol>
@@ -271,7 +269,7 @@ const PageWrap:React.FC<DetailsProps> = ({userDetails}) => {
               <Box>
                 <Text className={variable.label}>montly income</Text>
                 <Text className={variable.value}>
-                  {userDetails ? userDetails[0].education.income : "N/A"}
+                  {userDetails ? userDetails.education.income : "N/A"}
                 </Text>
               </Box>
             </GridCol>
@@ -279,7 +277,7 @@ const PageWrap:React.FC<DetailsProps> = ({userDetails}) => {
               <Box>
                 <Text className={variable.label}>loan repayment</Text>
                 <Text className={variable.value}>
-                  {userDetails ? userDetails[0].education.repayment : "N/A"}
+                  {userDetails ? userDetails.education.repayment : "N/A"}
                 </Text>
               </Box>
             </GridCol>
@@ -291,7 +289,7 @@ const PageWrap:React.FC<DetailsProps> = ({userDetails}) => {
               <Box>
                 <Text className={variable.label}>twitter</Text>
                 <Text className={variable.value}>
-                  {userDetails ? userDetails[0].socials.twitter : "N/A"}
+                  {userDetails ? userDetails.socials.twitter : "N/A"}
                 </Text>
               </Box>
             </GridCol>
@@ -299,7 +297,7 @@ const PageWrap:React.FC<DetailsProps> = ({userDetails}) => {
               <Box>
                 <Text className={variable.label}>facebook</Text>
                 <Text className={variable.value}>
-                  {userDetails ? userDetails[0].socials.facebook : "N/A"}
+                  {userDetails ? userDetails.socials.facebook : "N/A"}
                 </Text>
               </Box>
             </GridCol>
@@ -307,55 +305,69 @@ const PageWrap:React.FC<DetailsProps> = ({userDetails}) => {
               <Box>
                 <Text className={variable.label}>instagram</Text>
                 <Text className={variable.value}>
-                  {userDetails ? userDetails[0].socials.instagram : "N/A"}
+                  {userDetails ? userDetails.socials.instagram : "N/A"}
                 </Text>
               </Box>
             </GridCol>
           </Grid>
-          {
-            userDetails &&
-            (
-              <>
-                    <Divider my={"lg"} />
-          <Text className={variable.title}>Guarantor</Text>
-          <Grid justify="flex-start">
-            {userDetails[0].gurantors?.map((item: any, index: number) => (
-              <GridCol span={12} key={index} mt="lg" style={{borderBottom: index === data.length - 1 ? 'none' : '1px solid #ccc', paddingBottom:index === data.length - 1 ? '8px' : '2rem' }}>
-                <Grid justify="flex-start" gutter={"xl"}>
-                  <GridCol span={{ lg: 2.3, md: 4, sm: 6 }}>
-                    <Box>
-                      <Text className={variable.label}>full name</Text>
-                      <Text className={variable.value}>{item.fullName}</Text>
-                    </Box>
+          {userDetails && (
+            <>
+              <Divider my={"lg"} />
+              <Text className={variable.title}>Guarantor</Text>
+              <Grid justify="flex-start">
+                {userDetails.gurantors?.map((item: any, index: number) => (
+                  <GridCol
+                    span={12}
+                    key={index}
+                    mt="lg"
+                    style={{
+                      borderBottom:
+                        index === userDetails.gurantors.length - 1
+                          ? "none"
+                          : "1px solid #ccc",
+                      paddingBottom:
+                        index === userDetails.gurantors.length - 1
+                          ? "8px"
+                          : "2rem",
+                    }}
+                  >
+                    <Grid justify="flex-start" gutter={"xl"}>
+                      <GridCol span={{ lg: 2.3, md: 4, sm: 6 }}>
+                        <Box>
+                          <Text className={variable.label}>full name</Text>
+                          <Text className={variable.value}>
+                            {item.fullName}
+                          </Text>
+                        </Box>
+                      </GridCol>
+                      <GridCol span={{ lg: 2.3, md: 4, sm: 6 }}>
+                        <Box>
+                          <Text className={variable.label}>phone number</Text>
+                          <Text className={variable.value}>
+                            {item.phoneNumber}
+                          </Text>
+                        </Box>
+                      </GridCol>
+                      <GridCol span={{ lg: 2.3, md: 4, sm: 6 }}>
+                        <Box>
+                          <Text className={variable.label}>email address</Text>
+                          <Text className={variable.value}>{item.email}</Text>
+                        </Box>
+                      </GridCol>
+                      <GridCol span={{ lg: 2.3, md: 4, sm: 6 }}>
+                        <Box>
+                          <Text className={variable.label}>relationship</Text>
+                          <Text className={variable.value} tt={"capitalize"}>
+                            {item.relationship}
+                          </Text>
+                        </Box>
+                      </GridCol>
+                    </Grid>
                   </GridCol>
-                   <GridCol span={{ lg: 2.3, md: 4, sm: 6 }}>
-                    <Box>
-                      <Text className={variable.label}>phone number</Text>
-                      <Text className={variable.value}>{item.phoneNumber}</Text>
-                    </Box>
-                  </GridCol>
-                   <GridCol span={{ lg: 2.3, md: 4, sm: 6 }}>
-                    <Box>
-                      <Text className={variable.label}>email address</Text>
-                      <Text className={variable.value}>{item.email}</Text>
-                    </Box>
-                  </GridCol>
-                   <GridCol span={{ lg: 2.3, md: 4, sm: 6 }}>
-                    <Box>
-                      <Text className={variable.label}>relationship</Text>
-                      <Text className={variable.value}  tt={"capitalize"}>{item.relationship}</Text>
-                    </Box>
-                  </GridCol>
-                </Grid>
-              </GridCol>
-            ))}
-          </Grid>
-              
-              </>
-            )
-          }
-    
-        
+                ))}
+              </Grid>
+            </>
+          )}
         </Card>
       )}
     </Box>

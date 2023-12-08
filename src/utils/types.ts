@@ -30,6 +30,12 @@ export type UsersProps = {
   phoneNumber: string;
   joinedDate: string;
   status: "active" | "inactive" | "pending" | "rejected";
+  userId: string;
+  account: {
+    name: string;
+    number: number;
+    amount: string;
+  };
   personal: {
     fullName: string;
     phoneNumber: string;

@@ -206,6 +206,14 @@ export const thirdPaths: NavLinkProps[] = [
     icon: systemsIcon,
   },
 ];
+export const tabs = [
+  "general details",
+  "documents",
+  "bank details",
+  "loans",
+  "savings",
+  "app and system",
+] as string[];
 export const formatDate = (isoTimestamp: string): string => {
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",

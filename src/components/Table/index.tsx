@@ -28,7 +28,7 @@ interface UserProps {
 }
 const PAGE_SIZES = [100, 200, 300, 400 ];
 const Table:React.FC<UserProps> = ({users}) => {
-  const { dotsIcon, eyeIcon, outlineBlacklistIcon, activateIcon } = Svgs();
+  const { dotsIcon, eyeIcon } = Svgs();
   const [pageSize, setPageSize] = useState(PAGE_SIZES[1]);
   const [page, setPage] = useState(1);
   const [records, setRecords] = useState(users.slice(0, pageSize));
@@ -54,7 +54,8 @@ const Table:React.FC<UserProps> = ({users}) => {
         records={records}
         columns={[
           {
-            accessor: "organisation",
+            accessor: "company",
+            title: "Organization",
             noWrap: true,
             render: ({ company }) => (
               <Text className={variable.tableData}>{company}</Text>
@@ -127,7 +128,7 @@ const Table:React.FC<UserProps> = ({users}) => {
             accessor: "email",
             noWrap: true,
             render: ({ email }) => (
-              <Text className={variable.tableData}>{email}</Text>
+              <Text className={variable.tableData} style={{textTransform: "initial"}}>{email}</Text>
             ),
             filter: (
               <form className={variable.formWrap}>
@@ -287,7 +288,7 @@ const Table:React.FC<UserProps> = ({users}) => {
                   <ActionIcon aria-label="user-options" variant="transparent">{dotsIcon}</ActionIcon>
                 </MenuTarget>
                 <MenuDropdown>
-                  <Link href={`/dashboard/user/${users.id}?tab=general details`}>
+                  <Link href={`/dashboard/user/${users.id}?tab=general details`} onClick={() => localStorage.setItem("userDetail", JSON.stringify(users))}>
                     <MenuItem
                       leftSection={eyeIcon}
                       className={variable.menuItem}
