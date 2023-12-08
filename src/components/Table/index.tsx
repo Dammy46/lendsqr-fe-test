@@ -35,12 +35,16 @@ const Table:React.FC<UserProps> = ({users}) => {
 
   useEffect(() => {
     setPage(1);
+
+    //eslint-disable-next-line 
   }, [pageSize]);
 
   useEffect(() => {
     const from = (page - 1) * pageSize;
     const to = from + pageSize;
     setRecords(users.slice(from, to));
+
+    //eslint-disable-next-line 
   }, [page, pageSize]);
   
   return (
