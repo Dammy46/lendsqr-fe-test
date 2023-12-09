@@ -12,6 +12,7 @@ const Links = () => {
     <Link
       data-active={
         currentPath === item.link ||
+        (currentPath.includes("user") && item.active) ||
         undefined
       }
       href={item.link}

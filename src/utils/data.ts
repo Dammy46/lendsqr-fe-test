@@ -124,6 +124,7 @@ export const firstPaths: NavLinkProps[] = [
     link: "/dashboard/user",
     label: "Users",
     icon: usersIcon,
+    active: true,
   },
   { link: "", label: "Guarantors", icon: peoplesIcon },
   { link: "", label: "Loans", icon: moneySackIcon },

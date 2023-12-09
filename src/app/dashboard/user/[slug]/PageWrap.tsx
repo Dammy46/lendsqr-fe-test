@@ -121,9 +121,9 @@ const PageWrap: React.FC<DetailsProps> = ({ userProfile }) => {
             </Box>
             <Divider orientation="vertical" className={variable.divider} />
             <Box>
-              <Text className={variable.userAmount}>₦200,000.00</Text>
+              <Text className={variable.userAmount}>{userDetails ? userDetails.account.amount : "N/A"}</Text>
               <Text className={variable.userBank}>
-                9912345678/Providus Bank
+                {userDetails ?`${userDetails.account.number}/${userDetails.account.name}` : "N/A"}
               </Text>
             </Box>
           </Group>

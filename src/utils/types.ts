@@ -71,4 +71,5 @@ export type NavLinkProps = {
   link: string;
   label: string;
   icon: React.JSX.Element;
+  active?: boolean;
 };

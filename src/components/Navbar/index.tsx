@@ -7,7 +7,7 @@ import { NavbarProps } from '@/utils/types'
 
 const Navbar: React.FC<NavbarProps> = ({bCaseIcon, outlineChevDownIcon, homeIcon, leaveIcon}) => {
   return (
-        <AppShellNavbar py="md"  className={variable.navbar}>
+        <AppShellNavbar py="md"  className={variable.navbar}  withBorder={false}>
         <Box>
           <Menu>
             <MenuTarget>

@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({
   opened,
 }) => {
   return (
-    <AppShellHeader className={variable.header}>
+    <AppShellHeader className={variable.header} withBorder={false}>
       <Group
         h="100%"
         justify="space-between"
