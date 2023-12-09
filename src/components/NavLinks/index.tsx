@@ -18,33 +18,29 @@ const Links = () => {
       href={item.link}
       key={item.label}
       className={variable.link}
-     
     >
       {item.icon}
       <span>{item.label}</span>
     </Link>
   ));
 
-
-  const secondLinks = secondPaths.map((item:NavLinkProps) => (
+  const secondLinks = secondPaths.map((item: NavLinkProps) => (
     <Link
       data-active={currentPath === item.link || undefined}
       href={item.link}
       key={item.label}
       className={variable.link}
-  
     >
       {item.icon}
       <span>{item.label}</span>
     </Link>
   ));
-    const thirdLinks = thirdPaths.map((item:NavLinkProps) => (
+  const thirdLinks = thirdPaths.map((item: NavLinkProps) => (
     <Link
       data-active={currentPath === item.link || undefined}
       href={item.link}
       key={item.label}
       className={variable.link}
-     
     >
       {item.icon}
       <span>{item.label}</span>
@@ -60,8 +56,8 @@ const Links = () => {
         <Text className={variable.linkHead}>Businesses</Text>
         {secondLinks}
       </Stack>
-        <Stack mt={"1.5rem"} gap={"10px"}>
-        <Text className={variable.linkHead}>Setting</Text>
+      <Stack mt={"1.5rem"} gap={"10px"}>
+        <Text className={variable.linkHead}>Settings</Text>
         {thirdLinks}
       </Stack>
     </Box>

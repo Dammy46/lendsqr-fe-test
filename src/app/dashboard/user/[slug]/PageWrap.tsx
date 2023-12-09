@@ -141,7 +141,7 @@ const PageWrap: React.FC<DetailsProps> = ({ userProfile }) => {
                 <Box
                   className={variable.navLinkBox}
                   style={{
-                    borderBottom: search === item ? "2px solid #39CDCC" : "",
+                    borderBottom: search === item ? "2px solid #39CDCC" : "none",
                   }}
                 >
                   <Text c={search === item ? "#39CDCC" : "black"}>{item}</Text>

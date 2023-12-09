@@ -19,7 +19,7 @@
     color: #213f7d;
     padding: 7px 20px 7px 30px;
     opacity: 0.5;
-
+    transition: all 0.2s ease-in;
     &[data-active] {
       &,
       &:hover {
@@ -27,6 +27,11 @@
         border-left: 4px solid #39cdcc;
         opacity: 1;
       }
+    }
+    &:hover {
+      background-color: rgb(57 205 204 / 6%);
+      border-left: 4px solid #39cdcc;
+      opacity: 1;
     }
   }
   .linkHead {
@@ -49,6 +54,6 @@
   font-weight: 400;
 }
 .version {
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   font-size: 12px;
 }

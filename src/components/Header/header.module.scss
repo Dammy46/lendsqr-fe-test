@@ -7,6 +7,8 @@
   .headerTitle {
     flex: 1;
     flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 8rem;
     img {
       @media (max-width: 768px) {
         width: 120px !important;
@@ -41,6 +43,9 @@
           height: 14px;
         }
       }
+    }
+    @media (max-width: 768px) {
+      gap: 10px;
     }
   }
   .headerLinks {

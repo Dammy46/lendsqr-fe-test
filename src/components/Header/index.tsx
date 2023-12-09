@@ -15,7 +15,6 @@ import UserButton from "../UserButton";
 import { HeaderProps } from "@/utils/types";
 const Header: React.FC<HeaderProps> = ({
   searchIcon,
-  bellIcon,
   toggle,
   opened,
 }) => {
@@ -26,14 +25,16 @@ const Header: React.FC<HeaderProps> = ({
         justify="space-between"
         style={{ flexWrap: "nowrap" }}
         align="center"
-        px="md"
+        pl="30px"
+        pr={"md"}
       >
-        <Group
-          justify="space-between"
-          align="center"
-          className={variable.headerTitle}
-        >
-          <Image src={"/lendsqr.svg"} alt="lendsqr" width={'144px'} height={'auto'}/>
+        <Group align="center" className={variable.headerTitle}>
+          <Image
+            src={"/lendsqr.svg"}
+            alt="lendsqr"
+            width={"144px"}
+            height={"auto"}
+          />
           <Flex align={"center"} className={variable.flexWrap}>
             <TextInput
               aria-label="search-input"
@@ -56,7 +57,7 @@ const Header: React.FC<HeaderProps> = ({
         >
           <Link href={""}>Docs</Link>
           <ActionIcon variant="transparent" aria-label="notification">
-            <Image src="/bell.png" alt="bell"/>
+            <Image src="/bell.png" alt="bell" />
           </ActionIcon>
           <UserButton />
         </Group>

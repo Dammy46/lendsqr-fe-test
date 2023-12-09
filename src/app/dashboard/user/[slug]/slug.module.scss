@@ -2,9 +2,7 @@
   padding-top: 2rem;
   .backWrap {
     color: #545f7d;
-
     font-size: 16px;
-
     font-weight: 400;
     display: inline-flex;
     align-items: center;
@@ -13,9 +11,7 @@
   }
   .pageTitle {
     color: #213f7d;
-
     font-size: 24px;
-
     font-weight: 500;
   }
   .profileCard {
@@ -41,17 +37,13 @@
         .userAmount {
           white-space: nowrap;
           color: #213f7d;
-
           font-size: 22px;
-
           font-weight: 500;
         }
         .userTier {
           white-space: nowrap;
           color: #545f7d;
-
           font-size: 14px;
-
           font-weight: 500;
         }
         .userRate {
@@ -63,9 +55,7 @@
         .userId,
         .userBank {
           color: #545f7d;
-
           font-size: 14px;
-
           font-weight: 400;
         }
         .userBank {
@@ -90,21 +80,24 @@
     }
     .profileTabs {
       margin-top: 2rem;
-
       justify-content: space-between;
-
       .navLinkBox {
         padding-bottom: 6px;
-
+        transition: all 0.2s ease-in;
         p {
           color: black;
           text-align: center;
-          // font-family: SF Compact Text;
           font-size: 16px;
           text-transform: capitalize;
           font-weight: 400;
           @media (max-width: 768px) {
             font-size: 14px;
+          }
+        }
+        &:hover {
+          border-bottom: 2px solid #39cdcc !important;
+          p {
+            color: #39cdcc !important;
           }
         }
       }
@@ -113,7 +106,7 @@
   .generalTab {
     margin-top: 3rem;
     padding: 25px;
-
+    box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
     .title {
       text-transform: capitalize;
       color: #213f7d;
@@ -123,15 +116,12 @@
     .label,
     .value {
       color: #545f7d;
-
       font-size: 12px;
-
       font-weight: 400;
-
       text-transform: uppercase;
     }
     .value {
-      margin-top: 13px;
+      margin-top: 5px;
       font-size: 16px;
       text-transform: none;
       font-weight: 500;

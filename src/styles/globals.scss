@@ -25,9 +25,7 @@ a {
 }
 .mantine-datatable-pagination .mantine-Text-root {
   color: #545f7d !important;
-
   font-size: 14px !important;
-
   font-weight: 400 !important;
 }
 .mantine-datatable-header-cell-sortable-group {
@@ -38,9 +36,7 @@ a {
   flex-grow: inherit !important;
   color: #545f7d;
   font-size: 12px;
-
   font-weight: 600;
-
   text-transform: uppercase;
 }
 .mantine-datatable-header-cell-filter-action-icon {
@@ -63,7 +59,6 @@ a {
 .mantine-InputWrapper-label {
   color: #545f7d;
   font-size: 14px;
-
   font-weight: 500;
 }
 .mantine-datatable-pagination-pages-control[aria-label="Previous page"],
@@ -109,4 +104,8 @@ a {
 .mantine-TextInput-input:focus,
 .mantine-TextInput-input:focus-within {
   --_input-bd: #213f7d !important;
+}
+.mantine-Table-td,
+.mantine-Table-th {
+  padding: 15px 25px !important;
 }

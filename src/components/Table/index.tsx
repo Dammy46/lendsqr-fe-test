@@ -14,7 +14,7 @@ import {
   MenuDropdown,
   MenuItem,
   ActionIcon,
-  Image
+  Image,
 } from "@mantine/core";
 import Link from "next/link";
 import { DataTable } from "mantine-datatable";
@@ -26,8 +26,8 @@ import { formatDate } from "@/utils/data";
 interface UserProps {
   users: UsersProps[];
 }
-const PAGE_SIZES = [100, 200, 300, 400 ];
-const Table:React.FC<UserProps> = ({users}) => {
+const PAGE_SIZES = [100, 200, 300, 400];
+const Table: React.FC<UserProps> = ({ users }) => {
   const { dotsIcon, eyeIcon } = Svgs();
   const [pageSize, setPageSize] = useState(PAGE_SIZES[1]);
   const [page, setPage] = useState(1);
@@ -36,7 +36,7 @@ const Table:React.FC<UserProps> = ({users}) => {
   useEffect(() => {
     setPage(1);
 
-    //eslint-disable-next-line 
+    //eslint-disable-next-line
   }, [pageSize]);
 
   useEffect(() => {
@@ -44,9 +44,9 @@ const Table:React.FC<UserProps> = ({users}) => {
     const to = from + pageSize;
     setRecords(users.slice(from, to));
 
-    //eslint-disable-next-line 
+    //eslint-disable-next-line
   }, [page, pageSize]);
-  
+
   return (
     <Box mt={"3rem"}>
       <DataTable
@@ -128,7 +128,12 @@ const Table:React.FC<UserProps> = ({users}) => {
             accessor: "email",
             noWrap: true,
             render: ({ email }) => (
-              <Text className={variable.tableData} style={{textTransform: "initial"}}>{email}</Text>
+              <Text
+                className={variable.tableData}
+                style={{ textTransform: "initial" }}
+              >
+                {email}
+              </Text>
             ),
             filter: (
               <form className={variable.formWrap}>
@@ -200,7 +205,9 @@ const Table:React.FC<UserProps> = ({users}) => {
             title: "Date Joined",
             noWrap: true,
             render: ({ joinedDate }) => (
-              <Text className={variable.tableData}>{formatDate(joinedDate)}</Text>
+              <Text className={variable.tableData}>
+                {formatDate(joinedDate)}
+              </Text>
             ),
             filter: (
               <form className={variable.formWrap}>
@@ -285,10 +292,17 @@ const Table:React.FC<UserProps> = ({users}) => {
             render: (users) => (
               <Menu>
                 <MenuTarget>
-                  <ActionIcon aria-label="user-options" variant="transparent">{dotsIcon}</ActionIcon>
+                  <ActionIcon aria-label="user-options" variant="transparent">
+                    {dotsIcon}
+                  </ActionIcon>
                 </MenuTarget>
                 <MenuDropdown>
-                  <Link href={`/dashboard/user/${users.id}?tab=general details`} onClick={() => localStorage.setItem("userDetail", JSON.stringify(users))}>
+                  <Link
+                    href={`/dashboard/user/${users.id}?tab=general details`}
+                    onClick={() =>
+                      localStorage.setItem("userDetail", JSON.stringify(users))
+                    }
+                  >
                     <MenuItem
                       leftSection={eyeIcon}
                       className={variable.menuItem}
@@ -299,7 +313,7 @@ const Table:React.FC<UserProps> = ({users}) => {
                   <Link href={""}>
                     <MenuItem
                       className={variable.menuItem}
-                      leftSection={<Image src="/reject.png" alt="reject"/>}
+                      leftSection={<Image src="/reject.png" alt="reject" />}
                     >
                       Blacklist User
                     </MenuItem>
@@ -307,7 +321,7 @@ const Table:React.FC<UserProps> = ({users}) => {
                   <Link href={""}>
                     <MenuItem
                       className={variable.menuItem}
-                            leftSection={<Image src="/verify.png" alt="reject"/>}
+                      leftSection={<Image src="/verify.png" alt="reject" />}
                     >
                       Activate User
                     </MenuItem>
