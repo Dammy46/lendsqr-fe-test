@@ -8,11 +8,12 @@ const FormWrap = () => {
   return (
     <form >
           <Stack gap={'1rem'}>
-            <TextInput aria-label="email" placeholder="Email" type='email'/>
+            <TextInput aria-label="email" size='md' placeholder="Email" type='email'/>
             <PasswordInput
                 
                 aria-label="Password"
               placeholder="Password"
+              size='md'
               rightSectionWidth={70}
               visibilityToggleIcon={({ reveal }) =>
                 reveal ? <Text className={variable.toggle}>HIDE</Text> : <Text className={variable.toggle}>SHOW</Text>
